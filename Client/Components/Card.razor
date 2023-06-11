@@ -1,0 +1,33 @@
+﻿@using JikanDotNet
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary">I</MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">@AnimeTitle</MudText>
+            <MudText Typo="Typo.body2">Peninsula in Europe</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardMedia Image="@AnimeImage" Height="250" />
+    <MudCardContent>
+        <MudText Typo="Typo.body2">@AnimeSynopsis</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
+        <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+    </MudCardActions>
+</MudCard>
+
+@code
+{
+    [Parameter]
+    public string AnimeTitle { get; set; } = string.Empty;
+    [Parameter]
+    public string AnimeSynopsis { get; set; } = string.Empty;
+    [Parameter]
+    public string AnimeImage { get; set; } = string.Empty;
+}

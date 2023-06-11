@@ -1,0 +1,51 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider Theme="_theme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Elevation="0">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+            Anix Project
+    </MudAppBar>
+    <MudDrawer  @bind-Open="@_drawerOpen" DisableOverlay="true">
+        <MudDrawerHeader Class="d-flex flex-column flex-wrap">
+            <MudText Typo="Typo.h6">Anix Project</MudText>
+            <MudText Typo="Typo.subtitle2">Version 0.1.0</MudText>
+        </MudDrawerHeader>
+        <MudDrawerContainer>
+            <MyNavMenu />
+        </MudDrawerContainer>
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    bool _drawerOpen = true;
+
+    readonly MudTheme _theme = new ()
+    {
+        Typography = new Typography()
+        {
+            Default = new Default()
+            {
+                FontFamily = new []{ "Fira Code", "Heltivice", "monospace", "Arial", "sans-serif"}
+            }
+        },
+        Palette = new PaletteLight()
+        {
+            Primary = "#4a5759",
+            Secondary = "#edafb8",
+            Tertiary = "#f7e1d7",
+            Dark = "#dedbd2",
+            Background = "#dedbd2",
+        }
+    };
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+}

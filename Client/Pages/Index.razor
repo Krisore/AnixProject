@@ -1,0 +1,19 @@
+﻿@page "/"
+@using JikanDotNet
+@inject IAnimeService AnimeService
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudText Typo="Typo.h4" Align="Align.Center"> Hello, Welcome to Anix </MudText>
+    <Card AnimeTitle="@Anime.Title" AnimeSynopsis="@Anime.Synopsis" AnimeImage="@Image.LargeImageUrl"/>
+</MudContainer>
+
+@code{
+    private Anime? Anime { get; set; } = new();
+    private Image? Image { get; set; } = new();
+    protected override async Task OnInitializedAsync()
+    {
+        Anime = await AnimeService.GetAnimeAsync();
+        Image = Anime?.Images.JPG;
+    }
+
+}
